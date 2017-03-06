@@ -50,6 +50,8 @@ func NewConnection(deets *ConnectionDetails) (*Connection, error) {
 		c.Dialect = newPostgreSQL(deets)
 	case "mysql":
 		c.Dialect = newMySQL(deets)
+	case "mssql":
+		c.Dialect = newMsSQL(deets)
 	case "sqlite3":
 		c.Dialect = newSQLite(deets)
 	}

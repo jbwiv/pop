@@ -64,6 +64,10 @@ func (cd *ConnectionDetails) Finalize() error {
 	case "mysql":
 		cd.Port = defaults.String(cd.Port, "3006")
 		cd.Database = strings.TrimPrefix(cd.Database, "/")
+	case "mssql":
+		cd.Dialect = "mssql"
+		cd.Port = defaults.String(cd.Port, "1433")
+		cd.Database = strings.TrimPrefix(cd.Database, "/")
 	case "sqlite", "sqlite3":
 		cd.Dialect = "sqlite3"
 	default:

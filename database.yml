@@ -21,3 +21,7 @@ postgres:
 sqlite:
   dialect: "sqlite3"
   database: "./sql_scripts/sqlite/test.sqlite"
+
+mssql:
+  url: "postgres://postgres:postgres@localhost:5432/pop_test?sslmode=disable"
+  pool: 25
