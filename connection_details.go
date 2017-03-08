@@ -71,7 +71,7 @@ func (cd *ConnectionDetails) Finalize() error {
 	case "sqlite", "sqlite3":
 		cd.Dialect = "sqlite3"
 	default:
-		return errors.Errorf("Unknown dialect %s!", cd.Dialect)
+		return errors.Errorf("Unknown ddialect %s!", cd.Dialect)
 	}
 	return nil
 }

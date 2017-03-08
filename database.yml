@@ -23,5 +23,9 @@ sqlite:
   database: "./sql_scripts/sqlite/test.sqlite"
 
 mssql:
-  url: "postgres://postgres:postgres@localhost:5432/pop_test?sslmode=disable"
-  pool: 25
+  url: "mssql://postgres:postgres@localhost:5432/pop_test?sslmode=disable"
+  dialect: "mssql"
+  host: {{ envOr "MSSQL_HOST" "localhost"  }}
+  port: {{ envOr "MSSQL_PORT" "1533"  }}
+  user: {{ envOr "MSSQL_USER"  "root"  }}
+  password: {{ envOr "MSSQL_PASSWORD"  ""  }}

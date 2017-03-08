@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-clear
+#clear
 
 verbose=""
 
