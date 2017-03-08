@@ -25,7 +25,7 @@ func (m *mssql) URL() string {
 	if c.URL != "" {
 		return c.URL
 	}
-
+	// TODO JW -> insert url code
 	s := "%s:%s@(%s:%s)/%s?parseTime=true&multiStatements=true&readTimeout=1s"
 	return fmt.Sprintf(s, c.User, c.Password, c.Host, c.Port, c.Database)
 }
@@ -55,6 +55,7 @@ func (m *mssql) SelectMany(s store, models *Model, query Query) error {
 }
 
 func (m *mssql) CreateDB() error {
+	// TODO JW -> appropriate call to mssql command line
 	c := m.ConnectionDetails
 	cmd := exec.Command("mssql", "-u", c.User, "-p"+c.Password, "-h", c.Host, "-P", c.Port, "-e", fmt.Sprintf("create database %s", c.Database))
 	err := clam.RunAndListen(cmd, func(s string) {
@@ -64,6 +65,7 @@ func (m *mssql) CreateDB() error {
 }
 
 func (m *mssql) DropDB() error {
+	// TODO JW -> appropriate call to mssql command line
 	c := m.ConnectionDetails
 	cmd := exec.Command("mssql", "-u", c.User, "-p"+c.Password, "-h", c.Host, "-P", c.Port, "-e", fmt.Sprintf("drop database %s", c.Database))
 	err := clam.RunAndListen(cmd, func(s string) {
@@ -77,7 +79,7 @@ func (m *mssql) TranslateSQL(sql string) string {
 }
 
 func (m *mssql) FizzTranslator() fizz.Translator {
-	t := translators.Newmssql(m.URL(), m.Details().Database)
+	t := translators.newMsSQL(m.URL(), m.Details().Database)
 	return t
 }
 
