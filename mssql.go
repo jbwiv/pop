@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os/exec"
 
-	_ "github.com/go-sql-driver/mssql"
+	_ "github.com/denisenkom/go-mssqldb"
 	"github.com/markbates/going/clam"
 	. "github.com/markbates/pop/columns"
 	"github.com/markbates/pop/fizz"
@@ -79,7 +79,7 @@ func (m *mssql) TranslateSQL(sql string) string {
 }
 
 func (m *mssql) FizzTranslator() fizz.Translator {
-	t := translators.newMsSQL(m.URL(), m.Details().Database)
+	t := translators.NewMsSQL()
 	return t
 }
 
