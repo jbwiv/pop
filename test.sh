@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 set -e
 #clear
 
@@ -27,6 +28,6 @@ function test {
 #test "postgres"
 #test "sqlite"
 #test "mysql"
-test 'mssql'
+test 'sqlserver'
 
 rm tsoda

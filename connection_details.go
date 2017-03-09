@@ -64,14 +64,14 @@ func (cd *ConnectionDetails) Finalize() error {
 	case "mysql":
 		cd.Port = defaults.String(cd.Port, "3006")
 		cd.Database = strings.TrimPrefix(cd.Database, "/")
-	case "mssql":
-		cd.Dialect = "mssql"
+	case "sqlserver":
+		cd.Dialect = "sqlserver"
 		cd.Port = defaults.String(cd.Port, "1433")
 		cd.Database = strings.TrimPrefix(cd.Database, "/")
 	case "sqlite", "sqlite3":
 		cd.Dialect = "sqlite3"
 	default:
-		return errors.Errorf("Unknown ddialect %s!", cd.Dialect)
+		return errors.Errorf("Unknown dialect %s!", cd.Dialect)
 	}
 	return nil
 }

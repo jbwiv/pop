@@ -22,10 +22,8 @@ sqlite:
   dialect: "sqlite3"
   database: "./sql_scripts/sqlite/test.sqlite"
 
-mssql:
-  url: "mssql://postgres:postgres@localhost:5432/pop_test?sslmode=disable"
-  dialect: "mssql"
-  host: {{ envOr "MSSQL_HOST" "localhost"  }}
-  port: {{ envOr "MSSQL_PORT" "1533"  }}
-  user: {{ envOr "MSSQL_USER"  "root"  }}
-  password: {{ envOr "MSSQL_PASSWORD"  ""  }}
+sqlserver:
+  url: "sqlserver://sa@10.114.30.246:1433/pop_test"
+  dialect: "sqlserver"
+  user: "SA"
+  password: "fuck!!Sql"

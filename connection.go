@@ -8,6 +8,7 @@ import (
 	"github.com/markbates/going/defaults"
 	"github.com/markbates/going/randx"
 	"github.com/pkg/errors"
+	"fmt"
 )
 
 // Connections contains all of the available connections
@@ -50,8 +51,8 @@ func NewConnection(deets *ConnectionDetails) (*Connection, error) {
 		c.Dialect = newPostgreSQL(deets)
 	case "mysql":
 		c.Dialect = newMySQL(deets)
-	case "mssql":
-		c.Dialect = newMsSQL(deets)
+	case "sqlserver":
+		c.Dialect = newSqlServer(deets)
 	case "sqlite3":
 		c.Dialect = newSQLite(deets)
 	}
@@ -77,6 +78,9 @@ func (c *Connection) Open() error {
 	if c.Store != nil {
 		return nil
 	}
+	fmt.Printf("---- %s", c.Dialect)
+	fmt.Printf("---- %s", c.Dialect.Details())
+	fmt.Printf("---- %s", c.Dialect.URL())
 	db, err := sqlx.Open(c.Dialect.Details().Dialect, c.Dialect.URL())
 	db.SetMaxOpenConns(c.Dialect.Details().Pool)
 	if err == nil {
