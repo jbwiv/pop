@@ -39,6 +39,8 @@ func TestSpecificSuites(t *testing.T) {
 		suite.Run(t, &MySQLSuite{})
 	case "sqlite":
 		suite.Run(t, &SQLiteSuite{})
+	case "sqlserver":
+		suite.Run(t, &SQLServerSuite{})
 	}
 }
 
